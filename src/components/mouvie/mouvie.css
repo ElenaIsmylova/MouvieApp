@@ -1,0 +1,97 @@
+.mouvie {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    width: 450px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.65);
+    margin-bottom: 37px;
+}
+
+.mouvie__img {
+    display: block;
+    width: 183px;
+    margin-right: 20px;
+}
+
+.mouvie__column {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mouvie__title-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mouvie__title {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.mouvie__rating {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #66E900;
+    border-radius: 100%;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 26px;
+    flex-shrink: 0;
+}
+
+.red {
+    border: 2px solid #E90000;
+}
+
+.orange {
+    border: 2px solid #E97E00;
+}
+
+.yellow {
+    border: 2px solid #E9D100;
+}
+
+.green {
+    border: 2px solid #66E900;
+}
+
+.mouvie__release-date {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #827E7E;
+}
+
+.mouvie__overview {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 22px;
+    color: #000000;
+}
+
+@media (max-width: 500px) {
+    .mouvie {
+        display: block;
+        width: 350px;
+        position: relative;
+    }
+
+    .mouvie__img {
+        display: block;
+        position: absolute;
+        width: 60px;
+        top: 5px;
+        left: 5px;
+    }
+
+    .mouvie__title-wrapper,
+    .mouvie__release-date,
+    .mouvie__genres {
+        margin-left: 75px;
+    }
+}

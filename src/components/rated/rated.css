@@ -1,0 +1,8 @@
+.rated-movies {
+    width: 100%;
+    min-height: 400px;
+}
+
+.rated-movies__title {
+    text-align: center;
+}

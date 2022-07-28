@@ -1,0 +1,24 @@
+.buttons-wrapper {
+    width: 150px;
+    height: 54px;
+    margin: 20px auto;
+    
+}
+
+.btn {
+    width: 75px;
+    background-color: #fff;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 54px;
+    color: rgba(0, 0, 0, 0.65);
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.active {
+    color: #1890FF;
+    border-bottom: 2px solid #1890FF;
+}
