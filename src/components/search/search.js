@@ -18,6 +18,8 @@ export default class Search extends Component {
     let url = `https://api.themoviedb.org/3/search/movie?api_key=4d98c79e61832bdbf0b038abd07969a6&query=${value}`
     if (value) {
       this.debounceGetResponce(url)
+    } else {
+      this.debounceGetResponce('https://api.themoviedb.org/3/search/movie?api_key=4d98c79e61832bdbf0b038abd07969a6&query=return')
     }
   }
 

@@ -8,9 +8,15 @@ import './mouvies.css'
 export default class Mouvies extends Component {
 
   render() {
-    const {mouvies, genres, rememberRatedMouvies} = this.props
+    const {mouvies, genres, rememberRatedMouvies, ratedMouvies} = this.props
     const elements = mouvies.map(mouvie => {
 
+      let itemStars = 0
+      for (let value of ratedMouvies) {
+        if (mouvie.id === value.id) {
+          itemStars = value.stars
+        }
+      }
       let thisMouvieGenres = []
       for (let value of mouvie.genre_ids) {
         genres.forEach(elem => {
@@ -35,7 +41,7 @@ export default class Mouvies extends Component {
         overview={mouvie.overview}
         posterPath={posterPath}
         voteAverage={mouvie.vote_average}
-        stars={mouvie.stars}
+        stars={itemStars}
         rememberRatedMouvies={rememberRatedMouvies} />
     })
 
@@ -51,5 +57,5 @@ Mouvies.propTypes = {
   mouvies: PropTypes.arrayOf(PropTypes.object).isRequired,
   genres: PropTypes.arrayOf(PropTypes.object).isRequired,
   rememberRatedMouvies: PropTypes.func.isRequired,
-    
+  ratedMouvies: PropTypes.array
 }

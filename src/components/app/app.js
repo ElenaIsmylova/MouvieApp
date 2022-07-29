@@ -16,7 +16,7 @@ import './app.css'
 export default class App extends Component {
 	
   state = {
-    url: 'https://api.themoviedb.org/3/discover/movie?api_key=4d98c79e61832bdbf0b038abd07969a6',
+    url: 'https://api.themoviedb.org/3/search/movie?api_key=4d98c79e61832bdbf0b038abd07969a6&query=return',
     btnSearch: true,
     btnRated: false,
     mouvies: [],
@@ -37,18 +37,23 @@ export default class App extends Component {
       .then(data => {
         if (data.results.length === 0) {
           this.setState({
-            searchResult: false
+            searchResult: false,
+            mouvies: [],
+            loading: false,
+            totalResults: 0,
+            pageNumber: page,
           })
-        } 
-        this.setState({
-          url: url,
-          mouvies: data.results,
-          loading: false,
-          totalResults: data.total_results,
-          pageNumber: page,
-          searchResult: true
-        })
-				
+        } else {
+          this.setState({
+            url: url,
+            mouvies: data.results,
+            loading: false,
+            totalResults: data.total_results,
+            pageNumber: page,
+            searchResult: true
+          })
+        }
+        
       })
       .catch(this.onError)
   }
@@ -99,6 +104,10 @@ export default class App extends Component {
 
   onChangePage = (count) => {
     this.updateMouvies(this.state.url, count)
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }
 
   componentDidMount() {
@@ -123,17 +132,20 @@ export default class App extends Component {
       mouvies={mouvies} 
       genres={genres}
       rememberRatedMouvies={this.rememberRatedMouvies}
-										 /> 
+      ratedMouvies={ratedMouvies}/> 
       : null
     const serchedResult = (!searchResult && !rated) ? <NothingFound /> : null
+
     const ratedContent = rated ? <RatedMovies  
       mouvies={ratedMouvies}
       genres={genres}
+      ratedMouvies={ratedMouvies}
       rememberRatedMouvies={this.rememberRatedMouvies}/>
       : null
 
 
     const pagination = (hasData && !rated) ? <Pagination 
+      
       total={totalResults} 
       pageSize={20} 
       showSizeChanger={false}
@@ -155,7 +167,7 @@ export default class App extends Component {
         {content}
         {ratedContent}
         {pagination}
-				
+
       </div>
     )
   }	

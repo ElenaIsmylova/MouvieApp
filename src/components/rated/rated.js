@@ -8,7 +8,7 @@ import './rated.css'
 export default class RatedMovies extends Component {
 
   render() {
-    const {mouvies, genres, rememberRatedMouvies} = this.props
+    const {mouvies, genres, rememberRatedMouvies, ratedMouvies} = this.props
         
     return (
       <div className="rated-movies">
@@ -17,6 +17,7 @@ export default class RatedMovies extends Component {
         <Mouvies 
           mouvies={mouvies} 
           genres={genres}
+          ratedMouvies={ratedMouvies}
           rememberRatedMouvies={rememberRatedMouvies}/>
       </div>
     )
@@ -27,5 +28,5 @@ RatedMovies.propTypes = {
   mouvies: PropTypes.arrayOf(PropTypes.object).isRequired,
   genres: PropTypes.arrayOf(PropTypes.object).isRequired,
   rememberRatedMouvies: PropTypes.func.isRequired,
-    
+  ratedMouvies: PropTypes.array
 }
